@@ -2,7 +2,13 @@ import { useState } from "react";
 import { Calendar } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-import { CalendarEvent, CalendarModal, Navbar } from "../";
+import {
+  CalendarEvent,
+  CalendarModal,
+  FabAddNew,
+  FabDelete,
+  Navbar,
+} from "../";
 
 import { useCalendarStore, useUiStore } from "../../hooks";
 import { localizer, getMessagesES } from "../../helpers";
@@ -29,14 +35,15 @@ export const CalendarPage = () => {
   const onDoubleClick = (event) => {
     // console.log({ doubleClick: event });
     openDateModal();
-    setActiveEvent(event);
   };
   const onSelect = (event) => {
-    console.log({ click: event });
+    // console.log({ click: event });
+    setActiveEvent(event);
   };
 
   const onViewChanged = (event) => {
     localStorage.setItem("lastView", event);
+    setLastView(event);
   };
 
   return (
@@ -60,6 +67,8 @@ export const CalendarPage = () => {
         onView={onViewChanged}
       />
       <CalendarModal />
+      <FabAddNew />
+      <FabDelete />
     </>
   );
 };

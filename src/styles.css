@@ -38,3 +38,28 @@
   outline: none;
   padding: 10px;
 }
+
+/* Floating Action Button */
+.fab {
+  width: 80px; /* Asegúrate de que ancho y alto sean iguales */
+  height: 80px;
+  border-radius: 50%; /* 50% para crear un círculo */
+  bottom: 25px;
+  font-size: 30px;
+  position: fixed;
+  right: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Añadir sombra para darle un efecto de elevación */
+  cursor: pointer;
+}
+
+.fab-danger {
+  width: 80px; /* Asegúrate de que ancho y alto sean iguales */
+  height: 80px;
+  border-radius: 50%; /* 50% para crear un círculo */
+  bottom: 25px;
+  font-size: 30px;
+  position: fixed;
+  left: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Añadir sombra para darle un efecto de elevación */
+  cursor: pointer;
+}
