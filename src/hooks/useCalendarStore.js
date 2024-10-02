@@ -5,33 +5,34 @@ import {
   onSetActiveEvent,
   onUpdateEvent,
 } from "../store";
+import { calendarApi } from "../api";
 
 export const useCalendarStore = () => {
   const dispatch = useDispatch();
   const { events, activeEvent } = useSelector((state) => state.calendar);
+  const { user } = useSelector((state) => state.auth);
 
   const setActiveEvent = (calendarEvent) => {
     dispatch(onSetActiveEvent(calendarEvent));
   };
 
   const startSavingEvent = async (calendarEvent) => {
-    // TODO: llegar al backend
-    //Todo bien
+    //TODO: Update event
     if (calendarEvent._id) {
       //Actualizando
       dispatch(onUpdateEvent({ ...calendarEvent }));
-      // await updateEvent(calendarEvent);
     } else {
       //Creando
+      const { data } = await calendarApi.post("/events", calendarEvent);
+
       dispatch(
         onAddNewEvent({
           ...calendarEvent,
-          _id: new Date().getTime(),
+          id: data.event.id,
+          user,
         })
       );
-      // await createEvent(calendarEvent);
     }
-    // await saveEventToServer(calendarEvent);
   };
 
   const startDeletingEvent = () => {

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { calendarApi } from "../../api";
+import { calendarApi } from "../api";
 import { clearErrorMsg, onChecking, onLogin, onLogout } from "../store";
 
 export const useAuthStore = () => {
