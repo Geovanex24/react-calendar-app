@@ -28,7 +28,7 @@ const customStyles = {
   },
 };
 
-Modal.setAppElement("#root");
+if (import.meta.env.VITE_MODE !== "test") Modal.setAppElement("#root");
 
 export const CalendarModal = () => {
   const { isDateModalOpen, closeDateModal } = useUiStore();
